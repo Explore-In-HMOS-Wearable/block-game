@@ -1,0 +1,7 @@
+{
+  "src": [
+    "pages/Game",
+    "pages/Splash",
+    "pages/GameOver"
+  ]
+}

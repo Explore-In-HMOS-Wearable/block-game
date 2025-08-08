@@ -1,0 +1,12 @@
+{
+  "modelVersion": "5.1.0",
+  "name": "BlockGame",
+  "description": "Simple Block Game",
+  "dependencies": {
+    "@ohos/lottie": "^2.0.22"
+  },
+  "devDependencies": {
+    "@ohos/hypium": "1.0.21",
+    "@ohos/hamock": "1.0.1-rc2"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Block Game"
+    },
+    {
+      "name": "game_over",
+      "value": "Game Over"
+    },
+    {
+      "name": "score",
+      "value": "Score"
+    },
+    {
+      "name": "best_score",
+      "value": "Best Score"
+    },
+    {
+      "name": "play_again",
+      "value": "Play Again"
+    }
+  ]
+}

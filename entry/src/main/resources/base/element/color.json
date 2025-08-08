@@ -1,0 +1,48 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "bottom_background",
+      "value": "#0080FF"
+    },
+    {
+      "name": "shape_color_I",
+      "value": "#FF338996"
+    },
+    {
+      "name": "shape_color_O",
+      "value": "#FFA99B02"
+    },
+    {
+      "name": "shape_color_L",
+      "value": "#FFEA8B00"
+    },
+    {
+      "name": "shape_color_T",
+      "value": "#FF7F2C8C"
+    },
+    {
+      "name": "shape_color_S",
+      "value": "#FF0F8314"
+    },
+    {
+      "name": "game_over_block",
+      "value": "#D32F2F"
+    },
+    {
+      "name": "gameover_bg_blue",
+      "value": "#1976D2"
+    },
+    {
+      "name": "gameover_text_light_blue",
+      "value": "#64B5F6"
+    },
+    {
+      "name": "gameover_text_gold",
+      "value": "#FFA726"
+    }
+  ]
+}
