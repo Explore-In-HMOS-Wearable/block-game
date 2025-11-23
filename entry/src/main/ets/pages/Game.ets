@@ -4,6 +4,12 @@ import { SourceArea } from '../components/SourceArea';
 import { GameBoard } from '../components/GameBoard';
 import { promptAction } from '@kit.ArkUI';
 
+
+@Builder
+export function GameBuilder (){
+  Game()
+}
+
 @Entry
 @Component
 struct Game {
@@ -33,12 +39,16 @@ struct Game {
   };
   private scoreAnimationInterval: number = -1;
 
+  pageInfos: NavPathStack = new NavPathStack();
+
+
+
   onGameOverStateChange() {
     if (this.isGameOver) {
       this.fillGridForGameOver();
       setTimeout(() => {
         AppStorage.setOrCreate('score', this.displayedScore);
-        this.getUIContext().getRouter().replaceUrl({ url: 'pages/GameOver' });
+        this.pageInfos.pushPathByName('GameOver', '')
       }, 1200)
     }
   }
@@ -109,6 +119,8 @@ struct Game {
   }
 
   build() {
+
+    NavDestination() {
     Column() {
       Column() {
         Row() {
@@ -144,5 +156,13 @@ struct Game {
       })
 
     }.width('100%').height('100%').padding(20).backgroundColor('#3E57C5')
+
+    }.width('100%')
+    .height('100%')
+    .hideTitleBar(true)
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+    })
+
   }
 }

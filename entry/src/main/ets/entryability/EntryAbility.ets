@@ -17,7 +17,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     Logger.info(TAG, '%{public}s', 'Ability onWindowStageCreate');
-    windowStage.loadContent('pages/Splash', (err, data) => {
+    windowStage.loadContent('pages/Index', (err, data) => {
       AppStorage.setOrCreate('uiContext', windowStage.getMainWindowSync().getUIContext());
       PersistentStorage.persistProp('bestScore',0);
       if (err.code) {

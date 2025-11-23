@@ -1,5 +1,5 @@
-import { GameConstants } from "../common/GameConstants";
-import { Cell, PlacementInfo, ShapeDefinition } from "../model/Game";
+import { GameConstants } from '../common/GameConstants';
+import { Cell, PlacementInfo, ShapeDefinition } from '../model/Game';
 
 @Component
 export struct SourceArea {
@@ -111,9 +111,6 @@ export struct SourceArea {
         this.isLineClearing = false;
         this.cellAnimationState.clear();
         this.generateNewShapeAndCheckGameOver();
-        // if (this.isGameOver && this.canNextShapeBePlaced()) {
-        //   this.isGameOver = false;
-        // }
       }, totalAnimationTime);
 
       return true;

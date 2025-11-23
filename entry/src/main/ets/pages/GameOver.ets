@@ -1,6 +1,11 @@
 import { ArcButton, ArcButtonOptions } from '@ohos.arkui.advanced.ArcButton';
 import { ArcButtonStyleMode, ColorMetrics, LengthMetrics, LengthUnit } from '@kit.ArkUI';
 
+@Builder
+export function GameOverBuilder (){
+  GameOver()
+}
+
 @Entry
 @Component
 struct GameOver {
@@ -9,6 +14,7 @@ struct GameOver {
   @State bestScore: number = 0;
   @State screenOpacity: number = 1;
   private scoreAnimationInterval: number = -1;
+  pageInfos: NavPathStack = new NavPathStack();
 
   aboutToAppear(): void {
     this.bestScore = AppStorage.get('bestScore') as number;
@@ -43,54 +49,65 @@ struct GameOver {
   }
 
   build() {
-    Column() {
 
-      Text($r('app.string.game_over'))
-        .fontSize(25)
-        .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.gameover_text_light_blue'))
+    NavDestination() {
 
       Column() {
-        Text($r('app.string.score'))
-          .fontSize(20)
-          .fontColor($r('app.color.gameover_text_light_blue'))
-          .opacity(0.8)
 
-        Text(this.score.toString())
-          .fontSize(35)
-          .fontWeight(FontWeight.Bolder)
-          .fontColor(Color.White)
-      }.alignItems(HorizontalAlign.Center)
-
-      Column() {
-        Text($r('app.string.best_score'))
-          .fontSize(20)
-          .fontColor($r('app.color.gameover_text_light_blue'))
-          .opacity(0.8)
-
-        Text(this.bestScore.toString())
+        Text($r('app.string.game_over'))
           .fontSize(25)
           .fontWeight(FontWeight.Bold)
-          .fontColor($r('app.color.gameover_text_gold'))
-      }.alignItems(HorizontalAlign.Center)
+          .fontColor($r('app.color.gameover_text_light_blue'))
 
-      ArcButton({
-        options: new ArcButtonOptions({
-          label: $r('app.string.play_again'),
-          styleMode: ArcButtonStyleMode.CUSTOM,
-          fontSize: new LengthMetrics(18, LengthUnit.FP),
-          fontColor: ColorMetrics.resourceColor($r('app.color.gameover_bg_blue')),
-          backgroundColor: ColorMetrics.resourceColor('#FFF'),
-          onClick: () => {
-            this.getUIContext().getRouter().replaceUrl({ url: 'pages/Game' });
-          }
+        Column() {
+          Text($r('app.string.score'))
+            .fontSize(20)
+            .fontColor($r('app.color.gameover_text_light_blue'))
+            .opacity(0.8)
+
+          Text(this.score.toString())
+            .fontSize(35)
+            .fontWeight(FontWeight.Bolder)
+            .fontColor(Color.White)
+        }.alignItems(HorizontalAlign.Center)
+
+        Column() {
+          Text($r('app.string.best_score'))
+            .fontSize(20)
+            .fontColor($r('app.color.gameover_text_light_blue'))
+            .opacity(0.8)
+
+          Text(this.bestScore.toString())
+            .fontSize(25)
+            .fontWeight(FontWeight.Bold)
+            .fontColor($r('app.color.gameover_text_gold'))
+        }.alignItems(HorizontalAlign.Center)
+
+        ArcButton({
+          options: new ArcButtonOptions({
+            label: $r('app.string.play_again'),
+            styleMode: ArcButtonStyleMode.CUSTOM,
+            fontSize: new LengthMetrics(18, LengthUnit.FP),
+            fontColor: ColorMetrics.resourceColor($r('app.color.gameover_bg_blue')),
+            backgroundColor: ColorMetrics.resourceColor('#FFF'),
+            onClick: () => {
+              this.pageInfos.pushPathByName('Game', '')
+            }
+          })
         })
-      })
+      }
+      .alignItems(HorizontalAlign.Center)
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+      .backgroundColor($r('app.color.gameover_bg_blue'))
     }
-    .alignItems(HorizontalAlign.Center)
-    .justifyContent(FlexAlign.Center)
     .width('100%')
     .height('100%')
-    .backgroundColor($r('app.color.gameover_bg_blue'))
+    .hideTitleBar(true)
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+    })
+
   }
 }

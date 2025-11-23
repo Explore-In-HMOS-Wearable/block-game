@@ -1,0 +1,19 @@
+{
+  "routerMap" : [
+    {
+      "name" : "Splash",
+      "pageSourceFile"  : "src/main/ets/pages/Splash.ets",
+      "buildFunction" : "SplashBuilder"
+    },
+    {
+      "name" : "Game",
+      "pageSourceFile"  : "src/main/ets/pages/Game.ets",
+      "buildFunction" : "GameBuilder"
+    },
+    {
+      "name" : "GameOver",
+      "pageSourceFile"  : "src/main/ets/pages/GameOver.ets",
+      "buildFunction" : "GameOverBuilder"
+    }
+]
+}

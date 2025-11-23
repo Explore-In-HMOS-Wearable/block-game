@@ -1,7 +1,7 @@
 {
   "app": {
     "bundleName": "com.hmosdemos.blockgame",
-    "vendor": "example",
+    "vendor": "hmosdemos",
     "versionCode": 1000000,
     "versionName": "1.0.0",
     "icon": "$media:layered_image",

@@ -1,16 +1,24 @@
 import lottie, { AnimationItem } from '@ohos/lottie';
 
+
+@Builder
+export function SplashBuilder (){
+  Splash()
+}
+
 @Entry
 @Component
 struct Splash {
   private renderingSettings: RenderingContextSettings = new RenderingContextSettings(true)
   private canvasRenderingContext: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.renderingSettings)
   private animateItem: AnimationItem | null = null;
-  private animateName: string = "animation";
+  private animateName: string = 'animation';
+  pageInfos: NavPathStack = new NavPathStack();
+
 
   aboutToAppear(): void {
     setTimeout(() => {
-      this.getUIContext().getRouter().replaceUrl({ url: 'pages/Game' });
+      this.pageInfos.pushPathByName('Game', '')
     }, 1500)
   }
 
@@ -26,7 +34,7 @@ struct Splash {
       autoplay: false,
       name: this.animateName,
       contentMode: 'Contain',
-      path: "common/splash_animation.json",
+      path: 'common/splash_animation.json',
     })
 
     this.animateItem.addEventListener('DOMLoaded', (args: Object): void => {
@@ -36,26 +44,33 @@ struct Splash {
   }
 
   destroy() {
-    this.animateItem?.removeEventListener("DOMLoaded");
+    this.animateItem?.removeEventListener('DOMLoaded');
     lottie.destroy(this.animateName);
     this.animateItem = null;
   }
 
   build() {
-    Row() {
-      Canvas(this.canvasRenderingContext)
-        .width('100%')
-        .height('100%')
-        .onReady(() => {
-          if (this.animateItem != null) {
-            this.animateItem?.resize();
-          } else {
-            this.canvasRenderingContext.imageSmoothingEnabled = true;
-            this.canvasRenderingContext.imageSmoothingQuality = 'medium'
-            this.loadAnimation();
-          }
-        })
-    }
-    .width('100%').height('100%').backgroundColor('#3E57C5')
+    NavDestination() {
+      Row() {
+        Canvas(this.canvasRenderingContext)
+          .width('100%')
+          .height('100%')
+          .onReady(() => {
+            if (this.animateItem != null) {
+              this.animateItem?.resize();
+            } else {
+              this.canvasRenderingContext.imageSmoothingEnabled = true;
+              this.canvasRenderingContext.imageSmoothingQuality = 'medium'
+              this.loadAnimation();
+            }
+          })
+      }
+      .width('100%').height('100%').backgroundColor('#3E57C5')
+    }.width('100%')
+    .height('100%')
+    .hideTitleBar(true)
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+    })
   }
 }

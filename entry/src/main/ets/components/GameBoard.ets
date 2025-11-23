@@ -1,5 +1,5 @@
-import { GameConstants } from "../common/GameConstants"
-import { Cell, ShapeDefinition } from "../model/Game";
+import { GameConstants } from '../common/GameConstants'
+import { Cell, ShapeDefinition } from '../model/Game';
 
 
 @Component
