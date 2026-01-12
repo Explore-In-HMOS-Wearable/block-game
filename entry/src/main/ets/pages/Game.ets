@@ -18,7 +18,6 @@ struct Game {
   @State visualOffsetY: number = 0;
   @State isDragging: boolean = false;
   @State highlightCells: Cell[] = [];
-  @State clearingCells: Cell[] = [];
   @State gridState: (Resource | null)[][] = [];
   @State currentShape: ShapeDefinition = GameConstants.ALL_SHAPES[0];
   @State displayedScore: number = 0;
@@ -26,12 +25,6 @@ struct Game {
   @State bestScore: number = AppStorage.get('bestScore') as number;
   @State cellAnimationState: Map<string, 'clearing' | 'cleared'> = new Map();
   @State dropZoneArea: Area = {
-    width: 0,
-    height: 0,
-    position: { x: 0, y: 0 },
-    globalPosition: { x: 0, y: 0 }
-  };
-  @State draggableBlockArea: Area = {
     width: 0,
     height: 0,
     position: { x: 0, y: 0 },
@@ -62,13 +55,17 @@ struct Game {
       for (let col = 0; col < GameConstants.GRID_SIZE; col++) {
         if (this.gridState[row][col] === null) {
           const delay = (row * GameConstants.GRID_SIZE + col) * GameConstants.GAMEOVER_FILL_DELAY_MS;
-          setTimeout(() => {
-            this.gridState[row][col] = $r('app.color.game_over_block');
-            this.gridState = [...this.gridState];
-          }, delay);
+          this._update(row, col, $r('app.color.game_over_block'), delay)
         }
       }
     }
+  }
+
+  _update(row: number, col: number, res: Resource, delay: number) {
+    setTimeout(() => {
+      this.gridState[row][col] = $r('app.color.game_over_block');
+      this.gridState = [...this.gridState];
+    }, delay);
   }
 
   startScoreAnimation() {
@@ -129,7 +126,11 @@ struct Game {
         }.width('100%').height(20).justifyContent(FlexAlign.Center)
 
         Row() {
-          Text(this.displayedScore.toString()).fontSize(25).fontWeight(FontWeight.Bold).fontColor(Color.White).padding(4)
+          Text(this.displayedScore.toString())
+            .fontSize(25)
+            .fontWeight(FontWeight.Bold)
+            .fontColor(Color.White)
+            .padding(4)
         }.width('100%').height(35).justifyContent(FlexAlign.Center)
       }
 

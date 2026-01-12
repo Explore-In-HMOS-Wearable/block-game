@@ -10,9 +10,8 @@ export function GameOverBuilder (){
 @Component
 struct GameOver {
   @State score: number = 0;
-  @State targetScore: number = 0;
+  private targetScore: number = 0;
   @State bestScore: number = 0;
-  @State screenOpacity: number = 1;
   private scoreAnimationInterval: number = -1;
   pageInfos: NavPathStack = new NavPathStack();
 

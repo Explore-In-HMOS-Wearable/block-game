@@ -34,7 +34,7 @@ struct Splash {
       autoplay: false,
       name: this.animateName,
       contentMode: 'Contain',
-      path: 'common/splash_animation.json',
+      path: 'common/splash_animation.json'
     })
 
     this.animateItem.addEventListener('DOMLoaded', (args: Object): void => {

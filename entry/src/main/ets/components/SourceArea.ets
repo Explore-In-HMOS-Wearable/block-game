@@ -154,7 +154,7 @@ export struct SourceArea {
   }
 
   generateNewShape() {
-    const randomIndex = Math.floor(Math.random() * GameConstants.ALL_SHAPES.length);
+    const randomIndex = Math.floor(rand() * GameConstants.ALL_SHAPES.length);
     this.currentShape = GameConstants.ALL_SHAPES[randomIndex];
     this.showShape = true;
   }
@@ -175,7 +175,7 @@ export struct SourceArea {
               })
           }
 
-        }, (cell: Cell, index: number) => `${this.currentShape.name}-${index}`)
+        }, (cell: Cell, index: number) => `${this.currentShape.name}-${cell.row}-${cell.col}`)
       }
       .width((Math.max(...this.currentShape.cells.map(c => c.col)) + 1) * GameConstants.BLOCK_PREVIEW_SIZE)
       .height((Math.max(...this.currentShape.cells.map(c => c.row)) + 1) * GameConstants.BLOCK_PREVIEW_SIZE)
@@ -229,4 +229,10 @@ export struct SourceArea {
     .height(30)
     .width('100%')
   }
+}
+let randSeed: number = Date.now() & 0xffffffff;
+
+function rand(): number {
+  randSeed = (1664525 * randSeed + 1013904223) >>> 0;
+  return randSeed / 0xffffffff;
 }

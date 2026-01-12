@@ -6,12 +6,12 @@ Block Game is a captivating puzzle game that challenges you to fit different blo
 
 # Preview
 
-<div>    
+<div>
   <img src="screenshots/ss_4.gif" width="24%">
   <img src="screenshots/ss_1.png" width="24%">
   <img src="screenshots/ss_2.png" width="24%">
   <img src="screenshots/ss_3.png" width="24%">
-</div> 
+</div>
 
 # Use Cases
 
@@ -38,10 +38,10 @@ Quick entertainment during free time with its simple yet addictive gameplay mech
 │       │   ├───ets
 │       │   │   ├───components
 │       │   │   ├───├───GameBoard
-│       │   │   │   └───SourceArea 
+│       │   │   │   └───SourceArea
 │       │   │   ├───model
 │       │   │   │    └───Game
-│       │   │   ├───pages 
+│       │   │   ├───pages
 │       │   │   │   ├───Game
 │       │   │   │   ├───GameOver
 │       │   │   │   └───Splash

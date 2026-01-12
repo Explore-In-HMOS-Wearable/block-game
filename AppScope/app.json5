@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.hmosdemos.blockgame",
+    "bundleName": "com.hmosdemos.wearable.block_game",
     "vendor": "hmosdemos",
     "versionCode": 1000000,
     "versionName": "1.0.0",

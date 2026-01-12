@@ -1,12 +1,107 @@
-/node_modules
-/oh_modules
-/local.properties
-/.idea
-**/build
-/.hvigor
-.cxx
-/.clangd
-/.clang-format
-/.clang-tidy
-**/.test
+############################
+# HarmonyOS / ArkTS & JS (Lite) Project
+############################
+
+# Node modules & OH modules
+node_modules/
+**/node_modules/
+oh_modules/
+**/oh_modules/
+
+# Local & IDE specific
+local.properties
+**/local.properties
+.idea/
+**/.idea/**
+
+# Build & tool caches
+build/
+**/build/
+.hvigor/
+**/.hvigor/**
+.cxx/
+**/.cxx/**
+
+# Clang tools
+.clangd
+**/.clangd
+.clang-format
+**/.clang-format
+.clang-tidy
+**/.clang-tidy
+
+# Test & analyzer & preview
+.test
+**/.test/**
+.appanalyzer
+**/.appanalyzer/**
+.preview
+**/.preview/**
+preview/
+**/preview/**
+
+# Lock / config files treated as forbidden by scanner
+oh-package-lock.json5
+**/oh-package-lock.json5
+code-linter.json5
+**/code-linter.json5
+
+############################
+# Python helper scripts
+############################
+*.py
+__pycache__/
+*.pyc
+
+############################
+# DevEco / Gradle / native
+############################
+.gradle/
+.externalNativeBuild/
+
+############################
+# Editor & system junk
+############################
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+############################
+# Logs & temp files
+############################
+*.log
+logs/
+*.tmp
+
+############################
+# Output / dist
+############################
+coverage/
+dist/
+out/
+
+############################
+# JetBrains extra metadata
+############################
+*.iml
+
+# Ana dizindeki detail ve shell klasörlerini hariç tut
+/detail/
+/shell/
+
+# Tüm Excel dosyalarını hariç tut
+*.xls
+*.xlsx
+*.xlsm
+*.xltx
+*.xltm
+
 /.appanalyzer
+/.cache
+/material
+*.csr
+*.p12
+*.cer
+*.p7b
