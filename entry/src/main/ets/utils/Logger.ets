@@ -3,7 +3,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 class Logger {
   private domain: number;
   private prefix: string;
-  private format: string = '%{public}s, %{public}s';
 
   constructor(prefix: string) {
     this.prefix = prefix;
@@ -11,20 +10,20 @@ class Logger {
   }
 
   debug(...args: string[]): void {
-    hilog.debug(this.domain, this.prefix, this.format, args);
+    hilog.debug(this.domain, this.prefix, args[0] ?? '', ...args.slice(1));
   }
 
   info(...args: string[]): void {
-    hilog.info(this.domain, this.prefix, this.format, args);
+    hilog.info(this.domain, this.prefix, args[0] ?? '', ...args.slice(1));
   }
 
   warn(...args: string[]): void {
-    hilog.warn(this.domain, this.prefix, this.format, args);
+    hilog.warn(this.domain, this.prefix, args[0] ?? '', ...args.slice(1));
   }
 
   error(...args: string[]): void {
-    hilog.error(this.domain, this.prefix, this.format, args);
+    hilog.error(this.domain, this.prefix, args[0] ?? '', ...args.slice(1));
   }
 }
 
-export default new Logger('[CameraKitAVRecorder]');
+export default new Logger('[BlockGame]');

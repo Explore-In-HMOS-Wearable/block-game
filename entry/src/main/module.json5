@@ -11,6 +11,11 @@
     "installationFree": false,
     "pages": "$profile:main_pages",
     "routerMap": "$profile:route_maps",
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.VIBRATE"
+      }
+    ],
     "abilities": [
       {
         "name": "EntryAbility",
@@ -44,7 +49,7 @@
             "name": "ohos.extension.backup",
             "resource": "$profile:backup_config"
           }
-        ],
+        ]
       }
     ]
   }

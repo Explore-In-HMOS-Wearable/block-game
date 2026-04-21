@@ -1,6 +1,5 @@
 import lottie, { AnimationItem } from '@ohos/lottie';
 
-
 @Builder
 export function SplashBuilder (){
   Splash()
@@ -13,17 +12,22 @@ struct Splash {
   private canvasRenderingContext: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.renderingSettings)
   private animateItem: AnimationItem | null = null;
   private animateName: string = 'animation';
+  private splashTimerId: number = -1;
+  private domLoadedCallback: ((args: Object) => void) | null = null;
   pageInfos: NavPathStack = new NavPathStack();
 
-
   aboutToAppear(): void {
-    setTimeout(() => {
+    this.splashTimerId = setTimeout(() => {
       this.pageInfos.pushPathByName('Game', '')
     }, 1500)
   }
 
   aboutToDisappear(): void {
-    lottie.destroy();
+    if (this.splashTimerId !== -1) {
+      clearTimeout(this.splashTimerId);
+      this.splashTimerId = -1;
+    }
+    this.destroy();
   }
 
   loadAnimation() {
@@ -37,14 +41,18 @@ struct Splash {
       path: 'common/splash_animation.json'
     })
 
-    this.animateItem.addEventListener('DOMLoaded', (args: Object): void => {
+    this.domLoadedCallback = (_args: Object): void => {
       this.animateItem?.changeColor([225, 25, 100, 1]);
       this.animateItem?.play()
-    });
+    };
+    this.animateItem.addEventListener('DOMLoaded', this.domLoadedCallback);
   }
 
   destroy() {
-    this.animateItem?.removeEventListener('DOMLoaded');
+    if (this.domLoadedCallback !== null) {
+      this.animateItem?.removeEventListener('DOMLoaded', this.domLoadedCallback);
+      this.domLoadedCallback = null;
+    }
     lottie.destroy(this.animateName);
     this.animateItem = null;
   }

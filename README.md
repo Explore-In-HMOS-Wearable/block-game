@@ -1,8 +1,8 @@
-> **Note:** To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
-
 # Block Game
 
 Block Game is a captivating puzzle game that challenges you to fit different block shapes onto a grid, clearing lines to score points.
+
+To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
 
 # Preview
 
@@ -20,8 +20,8 @@ Quick entertainment during free time with its simple yet addictive gameplay mech
 # Tech Stack
 
 - **Languages**: ArkTS
-- **Frameworks**: HarmonyOS SDK 5.1.0(18)
-- **Tools**: DevEco Studio Vers 5.1.0.842
+- **Frameworks**: HarmonyOS SDK 6.0.0(20)
+- **Tools**: DevEco Studio 6.x
 - **Libraries**: @kit.ArkUI, @ohos/lottie
 
 # Directory Structure

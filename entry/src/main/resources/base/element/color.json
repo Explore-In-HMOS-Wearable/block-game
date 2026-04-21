@@ -5,20 +5,20 @@
       "value": "#FFFFFF"
     },
     {
-      "name": "bottom_background",
-      "value": "#0080FF"
-    },
-    {
       "name": "shape_color_I",
       "value": "#FF338996"
     },
     {
       "name": "shape_color_O",
-      "value": "#FFA99B02"
+      "value": "#FF00ACC1"
     },
     {
       "name": "shape_color_L",
       "value": "#FFEA8B00"
+    },
+    {
+      "name": "shape_color_J",
+      "value": "#FF1565C0"
     },
     {
       "name": "shape_color_T",
@@ -27,6 +27,10 @@
     {
       "name": "shape_color_S",
       "value": "#FF0F8314"
+    },
+    {
+      "name": "shape_color_Z",
+      "value": "#FFE53935"
     },
     {
       "name": "game_over_block",
